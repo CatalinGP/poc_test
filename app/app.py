@@ -47,10 +47,10 @@ def api_route():
         return jsonify({"error": "Service not found"}), 404
 
 @app.route('/webhook', methods=['POST'])
-    def webhook():
-        if request.method == 'POST':
-            repo = git.Repo('https://github.com/CatalinGP/poc_test.git')
-            origin = repo.remotes.origin
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('https://github.com/CatalinGP/poc_test.git')
+        origin = repo.remotes.origin
 origin.pull()
 return 'Updated PythonAnywhere successfully', 200
         else:
