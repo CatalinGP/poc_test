@@ -1,4 +1,0 @@
-2024-06-28 10:30:36,594 - app - INFO - Request: GET http://127.0.0.1:5000/ - Body: b''
-2024-06-28 10:30:36,597 - app - INFO - Response: 404 NOT FOUND b'<!doctype html>\n<html lang=en>\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\n'
-2024-06-28 10:30:42,545 - app - INFO - Request: GET http://127.0.0.1:5000/webhook - Body: b''
-2024-06-28 10:30:42,546 - app - INFO - Response: 404 NOT FOUND b'<!doctype html>\n<html lang=en>\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\n'

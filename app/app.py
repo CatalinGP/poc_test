@@ -46,27 +46,15 @@ def api_route():
         app.logger.warning(f'Service not found: {service}')
         return jsonify({"error": "Service not found"}), 404
 
-GITHUB_SECRET = 'randstad'
-
-def verify_signature(payload, signature):
-    mac = hmac.new(GITHUB_SECRET.encode(), msg=payload, digestmod=hashlib.sha256)
-    return hmac.compare_digest('sha256=' + mac.hexdigest(), signature)
-
 @app.route('/webhook', methods=['POST'])
-def webhook():
-    payload = request.get_data()
-    signature = request.headers.get('X-Hub-Signature-256')
-
-    if not verify_signature(payload, signature):
-        return 'Invalid signature', 403
-
-    event = request.headers.get('X-GitHub-Event')
-    if event == 'push':
-        subprocess.run(['./deploy.sh'])
-        return 'Success', 200
-
-    return 'Wrong event type', 400
+    def webhook():
+        if request.method == 'POST':
+            repo = git.Repo('https://github.com/CatalinGP/poc_test.git')
+            origin = repo.remotes.origin
+origin.pull()
+return 'Updated PythonAnywhere successfully', 200
+        else:
+            return 'Wrong event type', 400
 
 if __name__ == '__main__':
     app.run()
-# SECRET
